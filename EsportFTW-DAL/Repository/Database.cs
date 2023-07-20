@@ -4,8 +4,7 @@ namespace EsportFTW_DAL.Repository
 {
     internal abstract class Database
     {
-        private const string ConnectionString =
-            @"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=49161))(CONNECT_DATA=(SID=xe)));User ID=EsportFTW;Password=EsportFTW;";
+        private static readonly string ConnectionString = ConnectionStringProvider.GetConnectionString();
 
         /// <author>Azran Hossain</author>
         /// <summary>
