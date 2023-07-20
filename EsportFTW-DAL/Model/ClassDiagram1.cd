@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical" MembersFormat="FullSignature">
+  <Class Name="DataLayer.Model.Admin">
+    <Position X="10.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Admin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.Company">
+    <Position X="1.25" Y="10.75" Width="2.25" />
+    <AssociationLine Name="CompanyPhones" Type="DataLayer.Model.CompanyPhone">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-2.249" Y="0.146" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAgAAAAAIAAAQAABAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Model\Company.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="CompanyPhones" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataLayer.Model.CompanyPhone">
+    <Position X="1.5" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Model\CompanyPhone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.ContentCreator">
+    <Position X="6.5" Y="11.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAABAAAEAAAAAAAAAACAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ContentCreator.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SocialMediaLinks" />
+      <Property Name="Address" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="ContentCreatorPhones" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataLayer.Model.ContentCreatorAddress">
+    <Position X="2" Y="14" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAIAAAAAAAAAAIAAAABAAIAAAAAAAA=</HashCode>
+      <FileName>Model\ContentCreatorAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.ContentCreatorPhone">
+    <Position X="4" Y="11" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Model\ContentCreatorPhone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.ContentCreatorSocialMedia">
+    <Position X="4.5" Y="14" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAgABAAAAAAAAAAAAAAAAAAAACCAAAAAA=</HashCode>
+      <FileName>Model\ContentCreatorSocialMedia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.Finance">
+    <Position X="10.5" Y="14.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAgAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Finance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.Game">
+    <Position X="15" Y="8.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIgAAACAIAAAQAAAAAAAAACABAAAEAAAA=</HashCode>
+      <FileName>Model\Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.Manager">
+    <Position X="6.5" Y="6.5" Width="2.5" />
+    <AssociationLine Name="ManagerPhones" Type="DataLayer.Model.ManagerPhone">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.863" Y="1.154" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAACAQAAACAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Model\Manager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Team" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="ManagerPhones" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataLayer.Model.ManagerPhone">
+    <Position X="3" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Model\ManagerPhone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.Organization">
+    <Position X="9.5" Y="11.25" Width="2.25" />
+    <AssociationLine Name="OrganizationCompanies" Type="DataLayer.Model.OrganizationCompany">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.027" Y="0.317" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAwQAAAAACAAQAAAAAAAACAAAAIgAAAAA=</HashCode>
+      <FileName>Model\Organization.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Finance" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="OrganizationPhones" />
+      <Property Name="OrganizationCompanies" />
+      <Property Name="OrganizationTournaments" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataLayer.Model.OrganizationCompany">
+    <Position X="9.5" Y="9" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Model\OrganizationCompany.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.OrganizationPhone">
+    <Position X="13.25" Y="14.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Model\OrganizationPhone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.OrganizationTournament">
+    <Position X="8" Y="14.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Model\OrganizationTournament.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.Player">
+    <Position X="9.5" Y="3.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIQACAACAAAAQAAACAAAAAAAAAAIIACAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Player.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Address" />
+      <Property Name="SocialLinks" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="PlayerWinnings" />
+      <Property Name="PlayerTeams" />
+      <Property Name="PlayerPhones" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataLayer.Model.PlayerAddress">
+    <Position X="12.75" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAIAAAAAAAAAAIAAAABAAIAAAAAAAA=</HashCode>
+      <FileName>Model\PlayerAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.PlayerPhone">
+    <Position X="13" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Model\PlayerPhone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.PlayerSocialLink">
+    <Position X="12.75" Y="1" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAgABAAAAAAAAAAAAAAAAAAAACCAAAAAA=</HashCode>
+      <FileName>Model\PlayerSocialLink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.PlayerTeam">
+    <Position X="10" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAiAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PlayerTeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.PlayerWinning">
+    <Position X="12.75" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PlayerWinning.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.Record">
+    <Position X="12.25" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAgAAAAAAAAAAAAAAAAAABAABAAAAAAAA=</HashCode>
+      <FileName>Model\Record.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Tournament" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataLayer.Model.SocialMedia">
+    <Position X="6.5" Y="9" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAgAAAAAAAACAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Model\SocialMedia.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="SocialMediaPhones" />
+      <Property Name="ContentCreators" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataLayer.Model.SocialMediaPhone">
+    <Position X="3.75" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Model\SocialMediaPhone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.Team">
+    <Position X="5.25" Y="3.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAgAAAAAAAAAQAAAIgBACAAAAEAAEAAAA=</HashCode>
+      <FileName>Model\Team.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Manager" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="TeamWinnings" />
+      <Property Name="TeamGames" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataLayer.Model.TeamGame">
+    <Position X="3.75" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\TeamGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.TeamWinning">
+    <Position X="5.5" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\TeamWinning.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataLayer.Model.Tournament">
+    <Position X="12.25" Y="11" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EIAAAEAAAAAAgAAAAAIAAAQAAAAAAAAAAAAAAIAAIAA=</HashCode>
+      <FileName>Model\Tournament.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Organization" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="TournamentGames" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataLayer.Model.TournamentGame">
+    <Position X="15.5" Y="11.75" Width="2.25" />
+    <AssociationLine Name="Games" Type="DataLayer.Model.Game">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.662" Y="0.232" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAEAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\TournamentGame.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Games" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DataLayer.Model.User">
+    <Position X="8" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAgAAAAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Model\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
