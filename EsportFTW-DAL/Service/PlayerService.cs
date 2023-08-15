@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EsportFTW_DAL.DTOs;
 using EsportFTW_DAL.Model;
 using EsportFTW_DAL.Repository;
 
@@ -22,19 +23,30 @@ namespace EsportFTW_DAL.Service
             return _playerRepository.Get(id);
         }
 
-        public bool Add(Player entity)
+        public bool Add(PlayerBaseInfo entity)
         {
-            throw new NotImplementedException();
+            var newPlayer = new Player()
+            {
+                Name = entity.Name,
+                Email = entity.Email,
+                Password = entity.Password,
+                DOB = entity.DOB,
+                Picture = entity.Picture,
+                JoinDate = DateTime.Now,
+                PlayHours = entity.PlayHours,
+            };
+
+            return _playerRepository.Add(newPlayer);
         }
 
         public bool Update(Player entity)
         {
-            throw new NotImplementedException();
+            return _playerRepository.Update(entity);
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            return _playerRepository.Delete(id);
         }
     }
 }

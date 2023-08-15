@@ -10,7 +10,7 @@ public class Player : User
     public PlayerSocialLink SocialLinks { get; set; }
     public List<PlayerPhone> PlayerPhones { get; set; }
     public List<PlayerWinning> PlayerWinnings { get; set; }
-    public Team team { get; set; }
+    public Team Team { get; set; }
 
-// Additional properties and methods specific to Player
+    // Additional properties and methods specific to Player
 }

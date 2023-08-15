@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EsportFTW_DAL.DTOs;
 
 namespace EsportFTW_DAL.Interface
 {
@@ -11,7 +12,7 @@ namespace EsportFTW_DAL.Interface
     {
         IEnumerable<Player> Get();
         Player Get(int id);
-        bool Add(Player entity);
+        bool Add(PlayerBaseInfo entity);
         bool Update(Player entity);
         bool Delete(int id);
     }

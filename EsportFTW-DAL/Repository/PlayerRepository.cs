@@ -21,7 +21,23 @@ namespace EsportFTW_DAL.Repository
 
         public bool Add(Player entity)
         {
-            throw new NotImplementedException();
+            const string query = "INSERT INTO Player (Player_ID, Player_Name, Player_Email, Player_Password, Player_Picture, Player_JoinDate, Player_Play_Hours, Player_Salary, Player_DOB) " +
+                                 "VALUES (seq_player_id.NEXTVAL, :name, :email, :password, :picture, :joinDate, :playHours, :salary, :dob)";
+
+            var parameters = new[]
+            {
+                new OracleParameter(":name", OracleDbType.Varchar2) { Value = entity.Name },
+                new OracleParameter(":email", OracleDbType.Varchar2) { Value = entity.Email },
+                new OracleParameter(":password", OracleDbType.Varchar2) { Value = entity.Password },
+                new OracleParameter(":picture", OracleDbType.Varchar2) { Value = entity.Picture },
+                new OracleParameter(":joinDate", OracleDbType.Date) { Value = entity.JoinDate },
+                new OracleParameter(":playHours", OracleDbType.Double) { Value = entity.PlayHours },
+                new OracleParameter(":salary", OracleDbType.Decimal) { Value = entity.Salary },
+                new OracleParameter(":dob", OracleDbType.Date) { Value = entity.DOB }
+            };
+
+            var rowsAffected = ExecuteNonQuery(query, parameters);
+            return rowsAffected > 0;
         }
 
         public bool Update(Player entity)
@@ -36,7 +52,7 @@ namespace EsportFTW_DAL.Repository
 
         private static Player MapPlayer(IDataRecord reader)
         {
-            return new Player
+            var player = new Player
             {
                 Id = reader.GetInt32(0),
                 Name = reader.GetString(1),
@@ -46,39 +62,57 @@ namespace EsportFTW_DAL.Repository
                 JoinDate = reader.GetDateTime(5),
                 Salary = reader.GetDecimal(6),
                 PlayHours = reader.GetInt32(7),
-                DOB = reader.GetDateTime(8),
-                Address = new PlayerAddress
+                DOB = reader.GetDateTime(8)
+            };
+
+            if (!reader.IsDBNull(9))
+            {
+                player.Address = new PlayerAddress
                 {
                     ID = reader.GetInt32(9),
                     Country = reader.GetString(10),
                     City = reader.GetString(11),
                     Street = reader.GetString(12),
                     ZipCode = reader.GetString(13),
-                },
-                SocialLinks = new PlayerSocialLink
+                };
+            }
+
+            if (!reader.IsDBNull(14))
+            {
+                player.SocialLinks = new PlayerSocialLink
                 {
                     ID = reader.GetInt32(14),
                     FacebookLink = reader.GetString(15),
                     InstagramLink = reader.GetString(16),
                     TwitterLink = reader.GetString(17),
                     YoutubeLink = reader.GetString(18),
-                },
+                };
+            }
 
-                PlayerPhones = new List<PlayerPhone>()
+            if (!reader.IsDBNull(19))
+            {
+                player.PlayerPhones = new List<PlayerPhone>
                 {
                     new PlayerPhone
                     {
                         ID = reader.GetInt32(19),
                         Phone = reader.GetString(20),
                     },
-                },
-                team = new Team
+                };
+            }
+
+            if (!reader.IsDBNull(21))
+            {
+                player.Team = new Team
                 {
                     ID = reader.GetInt32(21),
                     Name = reader.GetString(22),
-                }
-            };
+                };
+            }
+
+            return player;
         }
+
 
         private const string AllPlayerDataQuery = @"SELECT
                                     p.player_id, p.player_name, p.player_email, p.player_password, p.player_picture, p.player_joindate, p.player_play_hours,    p.player_salary,             p.player_dob,
@@ -87,11 +121,12 @@ namespace EsportFTW_DAL.Repository
                                     pp.pp_id, pp.player_phone,
                                     t.team_id, t.team_name
                             FROM player p
-                                   JOIN player_address pa ON p.player_id = pa.pa_id
-                                   JOIN player_social_link psl ON p.player_id = psl.player_id
-                                   JOIN player_phone pp ON p.player_id = pp.player_id
-                                   JOIN player_team pt ON p.player_id = pt.player_id
-                                   JOIN team t ON pt.team_id = t.team_id
-                                   JOIN player_winning pw ON p.player_id = pw.player_id";
+                                   LEFT JOIN player_address pa ON p.player_id = pa.pa_id
+                                   LEFT JOIN player_social_link psl ON p.player_id = psl.player_id
+                                   LEFT JOIN player_phone pp ON p.player_id = pp.player_id
+                                   LEFT JOIN player_team pt ON p.player_id = pt.player_id
+                                   LEFT JOIN team t ON pt.team_id = t.team_id
+                                   LEFT JOIN player_winning pw ON p.player_id = pw.player_id";
+
     }
 }
