@@ -42,7 +42,24 @@ namespace EsportFTW_DAL.Repository
 
         public bool Update(Player entity)
         {
-            throw new NotImplementedException();
+            const string query = "UPDATE Player SET player_name = :name, player_email = :email, player_password = :password, player_picture = :picture, " +
+                                 "player_joindate = :joinDate, player_salary = :salary, player_play_hours = :playHours, player_dob = :dob WHERE player_id = :id";
+
+            var parameters = new[]
+            {
+                new OracleParameter(":name", OracleDbType.Varchar2) { Value = entity.Name },
+                new OracleParameter(":email", OracleDbType.Varchar2) { Value = entity.Email },
+                new OracleParameter(":password", OracleDbType.Varchar2) { Value = entity.Password },
+                new OracleParameter(":picture", OracleDbType.Varchar2) { Value = entity.Picture },
+                new OracleParameter(":joinDate", OracleDbType.Date) { Value = entity.JoinDate },
+                new OracleParameter(":salary", OracleDbType.Decimal) { Value = entity.Salary },
+                new OracleParameter(":playHours", OracleDbType.Int32) { Value = entity.PlayHours },
+                new OracleParameter(":dob", OracleDbType.Date) { Value = entity.DOB },
+                new OracleParameter(":id", OracleDbType.Int32) { Value = entity.Id }
+            };
+
+            var rowsAffected = ExecuteNonQuery(query, parameters.ToArray());
+            return rowsAffected > 0;
         }
 
         public bool Delete(int id)
@@ -64,8 +81,8 @@ namespace EsportFTW_DAL.Repository
                 Password = reader.GetString(3),
                 Picture = reader.GetString(4),
                 JoinDate = reader.GetDateTime(5),
-                Salary = reader.GetDecimal(6),
-                PlayHours = reader.GetInt32(7),
+                PlayHours = reader.GetInt32(6),
+                Salary = reader.GetDecimal(7),
                 DOB = reader.GetDateTime(8)
             };
 

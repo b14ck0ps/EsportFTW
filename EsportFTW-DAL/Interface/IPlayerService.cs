@@ -13,7 +13,7 @@ namespace EsportFTW_DAL.Interface
         IEnumerable<Player> Get();
         Player Get(int id);
         bool Add(PlayerBaseInfo entity);
-        bool Update(Player entity);
+        bool Update(PlayerBaseInfo entity);
         bool Delete(int id);
     }
 }

@@ -43,6 +43,16 @@ namespace EsportFTW_API.Controllers
             return BadRequest();
         }
 
+        [HttpPut]
+        public ActionResult<PlayerBaseInfo> Put([FromBody] PlayerBaseInfo player)
+        {
+            //if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            if (_playerService.Update(player))
+                return Ok(player);
+            return BadRequest();
+        }
+
         [HttpDelete]
         public ActionResult<Player> Delete(int id)
         {

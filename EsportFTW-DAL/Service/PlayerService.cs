@@ -1,9 +1,4 @@
 ﻿using EsportFTW_DAL.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EsportFTW_DAL.DTOs;
 using EsportFTW_DAL.Model;
 using EsportFTW_DAL.Repository;
@@ -39,9 +34,22 @@ namespace EsportFTW_DAL.Service
             return _playerRepository.Add(newPlayer);
         }
 
-        public bool Update(Player entity)
+        public bool Update(PlayerBaseInfo entity)
         {
-            return _playerRepository.Update(entity);
+            var updatedPlayer = new Player()
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Email = entity.Email,
+                Password = entity.Password,
+                DOB = entity.DOB,
+                Picture = entity.Picture,
+                JoinDate = DateTime.Now,
+                PlayHours = entity.PlayHours,
+                Salary = entity.Salary
+            };
+
+            return _playerRepository.Update(updatedPlayer);
         }
 
         public bool Delete(int id)
