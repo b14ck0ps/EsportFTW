@@ -1,5 +1,6 @@
 ﻿using EsportFTW_DAL.DTOs;
 using EsportFTW_DAL.Interface;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,7 +35,7 @@ namespace EsportFTW_API.Controllers
         [HttpPost]
         public ActionResult<PlayerBaseInfo> Post([FromBody] PlayerBaseInfo player)
         {
-            //if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
             if (_playerService.Add(player))
             {
