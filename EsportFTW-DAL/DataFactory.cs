@@ -6,5 +6,6 @@ namespace EsportFTW_DAL
     public static class DataFactory
     {
         public static IAdminService AdminService => new AdminService();
+        public static IPlayerService PlayerService => new PlayerService();
     }
 }

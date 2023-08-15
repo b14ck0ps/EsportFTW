@@ -30,7 +30,7 @@ namespace EsportFTW_DAL.Service
 
         public bool Delete(int id)
         {
-           return _adminRepository.Delete(id);
+            return _adminRepository.Delete(id);
         }
     }
 }

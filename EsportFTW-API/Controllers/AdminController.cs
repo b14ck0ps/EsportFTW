@@ -41,7 +41,7 @@ namespace EsportFTW_API.Controllers
         public ActionResult<Admin> Put([FromBody] Admin admin)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-
+            
             _adminService.Update(admin);
             return Ok(admin);
         }
