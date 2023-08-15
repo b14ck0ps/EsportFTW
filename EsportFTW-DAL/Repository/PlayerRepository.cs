@@ -47,7 +47,11 @@ namespace EsportFTW_DAL.Repository
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            const string query = "DELETE FROM player WHERE player_id = :id";
+            var parameter = new OracleParameter(":id", OracleDbType.Int32) { Value = id };
+
+            var rowsAffected = ExecuteNonQuery(query, new[] { parameter });
+            return rowsAffected > 0;
         }
 
         private static Player MapPlayer(IDataRecord reader)

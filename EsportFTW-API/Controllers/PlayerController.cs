@@ -1,4 +1,5 @@
 ﻿using EsportFTW_DAL.DTOs;
+using EsportFTW_DAL.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,17 +9,17 @@ namespace EsportFTW_API.Controllers
     [ApiController]
     public class PlayerController : ControllerBase
     {
-        private readonly IPlayerService _palPlayerService;
+        private readonly IPlayerService _playerService;
 
         public PlayerController(IPlayerService playerService)
         {
-            _palPlayerService = playerService;
+            _playerService = playerService;
         }
 
         [HttpGet]
         public ActionResult<Player> Get()
         {
-            var players = _palPlayerService.Get();
+            var players = _playerService.Get();
             return Ok(players);
         }
 
@@ -26,7 +27,7 @@ namespace EsportFTW_API.Controllers
         [Route("{id}")]
         public ActionResult<Player> Get(int id)
         {
-            var player = _palPlayerService.Get(id);
+            var player = _playerService.Get(id);
             return Ok(player);
         }
 
@@ -35,10 +36,18 @@ namespace EsportFTW_API.Controllers
         {
             //if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            if (_palPlayerService.Add(player))
+            if (_playerService.Add(player))
             {
                 return Created("api/player", player);
             }
+            return BadRequest();
+        }
+
+        [HttpDelete]
+        public ActionResult<Player> Delete(int id)
+        {
+            if (_playerService.Delete(id))
+                return Ok();
             return BadRequest();
         }
     }
