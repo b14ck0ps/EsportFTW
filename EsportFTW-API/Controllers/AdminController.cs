@@ -23,10 +23,8 @@ namespace EsportFTW_API.Controllers
         [HttpPost]
         public ActionResult<Admin> Post([FromBody] Admin admin)
         {
-            /* if (!ModelState.IsValid)
-             {
-                 return BadRequest(ModelState);
-             }*/
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
             _adminService.Add(admin);
             return Created("api/admin", admin);
         }
@@ -42,10 +40,8 @@ namespace EsportFTW_API.Controllers
         [HttpPut]
         public ActionResult<Admin> Put([FromBody] Admin admin)
         {
-            /*if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }*/
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
             _adminService.Update(admin);
             return Ok(admin);
         }
