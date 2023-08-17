@@ -65,11 +65,11 @@ namespace EsportFTW_DAL.Repository
         {
             return new Admin
             {
-                Id = reader.GetInt32(0),
-                Name = reader.GetString(1),
-                Email = reader.GetString(2),
-                Password = reader.GetString(3),
-                Picture = reader.GetString(4),
+                Id = reader.GetInt32(reader.GetOrdinal("admin_id")),
+                Name = reader.GetString(reader.GetOrdinal("admin_name")),
+                Email = reader.GetString(reader.GetOrdinal("admin_email")),
+                Password = reader.GetString(reader.GetOrdinal("admin_password")),
+                Picture = reader.GetString(reader.GetOrdinal("admin_picture")),
             };
         }
     }
