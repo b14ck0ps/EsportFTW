@@ -146,19 +146,7 @@ namespace EsportFTW_DAL.Repository
         }
 
 
-        private const string AllPlayerDataQuery = @"SELECT
-                                    p.player_id, p.player_name, p.player_email, p.player_password, p.player_picture, p.player_joindate, p.player_play_hours,    p.player_salary,             p.player_dob,
-                                    pa.pa_id, pa.player_country, pa.player_city, pa.player_street, player_zip_code,
-                                    psl.psl_id, psl.player_facebook_link, psl.player_instagram_link, psl.player_twitter_link, psl.player_instagram_link,
-                                    pp.pp_id, pp.player_phone,
-                                    t.team_id, t.team_name
-                            FROM player p
-                                   LEFT JOIN player_address pa ON p.player_id = pa.pa_id
-                                   LEFT JOIN player_social_link psl ON p.player_id = psl.player_id
-                                   LEFT JOIN player_phone pp ON p.player_id = pp.player_id
-                                   LEFT JOIN player_team pt ON p.player_id = pt.player_id
-                                   LEFT JOIN team t ON pt.team_id = t.team_id
-                                   LEFT JOIN player_winning pw ON p.player_id = pw.player_id";
+        private const string AllPlayerDataQuery = "select * from player_detail_view";
 
     }
 }
