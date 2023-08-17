@@ -71,6 +71,17 @@ namespace EsportFTW_DAL.Repository
             return rowsAffected > 0;
         }
 
+        public bool EmailExists(string email)
+        {
+            const string query = "SELECT COUNT(*) FROM player WHERE player_email = :email";
+            var parameter = new OracleParameter(":email", OracleDbType.Varchar2) { Value = email };
+
+            var count = ExecuteScalarQuery(query, new[] { parameter });
+
+            return count > 0;
+        }
+
+
         private static Player MapPlayer(IDataRecord reader)
         {
             var player = new Player

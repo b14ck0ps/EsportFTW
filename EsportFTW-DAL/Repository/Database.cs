@@ -70,5 +70,32 @@ namespace EsportFTW_DAL.Repository
             return rowsAffected;
         }
 
+        /// <summary>
+        /// Executes a query that returns a single value (such as a count) and returns the result.
+        /// </summary>
+        /// <param name="query">The SQL query to execute.</param>
+        /// <param name="parameters">Optional Oracle parameters for the query.</param>
+        /// <returns>The result of the query as an integer.</returns>
+        private protected static int ExecuteScalarQuery(string query, OracleParameter[]? parameters = null)
+        {
+            using var connection = new OracleConnection(ConnectionString);
+            connection.Open();
+
+            using var command = connection.CreateCommand();
+            command.CommandText = query;
+
+            if (parameters != null)
+            {
+                command.Parameters.AddRange(parameters);
+            }
+
+            var result = command.ExecuteScalar();
+            var count = result != null ? Convert.ToInt32(result) : 0;
+
+            connection.Close();
+
+            return count;
+        }
+
     }
 }

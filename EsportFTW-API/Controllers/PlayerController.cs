@@ -37,6 +37,12 @@ namespace EsportFTW_API.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
+            if (_playerService.IsEmailUnique(player.Email))
+            {
+                ModelState.AddModelError("Email", "Email is already in use");
+                return BadRequest(ModelState);
+            }
+
             if (_playerService.Add(player))
             {
                 return Created("api/player", player);

@@ -1,9 +1,4 @@
 ﻿using EsportFTW_DAL.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EsportFTW_DAL.DTOs;
 
 namespace EsportFTW_DAL.Interface
@@ -15,5 +10,6 @@ namespace EsportFTW_DAL.Interface
         bool Add(PlayerBaseInfo entity);
         bool Update(PlayerBaseInfo entity);
         bool Delete(int id);
+        bool IsEmailUnique(string email);
     }
 }
