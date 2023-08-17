@@ -86,59 +86,59 @@ namespace EsportFTW_DAL.Repository
         {
             var player = new Player
             {
-                Id = reader.GetInt32(0),
-                Name = reader.GetString(1),
-                Email = reader.GetString(2),
-                Password = reader.GetString(3),
-                Picture = reader.GetString(4),
-                JoinDate = reader.GetDateTime(5),
-                PlayHours = reader.GetInt32(6),
-                Salary = reader.GetDecimal(7),
-                DOB = reader.GetDateTime(8)
+                Id = reader.GetInt32(reader.GetOrdinal("player_id")),
+                Name = reader.GetString(reader.GetOrdinal("player_name")),
+                Email = reader.GetString(reader.GetOrdinal("player_email")),
+                Password = reader.GetString(reader.GetOrdinal("player_password")),
+                Picture = reader.GetString(reader.GetOrdinal("player_picture")),
+                JoinDate = reader.GetDateTime(reader.GetOrdinal("player_joindate")),
+                PlayHours = reader.GetInt32(reader.GetOrdinal("player_play_hours")),
+                Salary = reader.GetDecimal(reader.GetOrdinal("player_salary")),
+                DOB = reader.GetDateTime(reader.GetOrdinal("player_dob"))
             };
 
-            if (!reader.IsDBNull(9))
+            if (!reader.IsDBNull(reader.GetOrdinal("pa_id")))
             {
                 player.Address = new PlayerAddress
                 {
-                    ID = reader.GetInt32(9),
-                    Country = reader.GetString(10),
-                    City = reader.GetString(11),
-                    Street = reader.GetString(12),
-                    ZipCode = reader.GetString(13),
+                    ID = reader.GetInt32(reader.GetOrdinal("pa_id")),
+                    Country = reader.GetString(reader.GetOrdinal("player_country")),
+                    City = reader.GetString(reader.GetOrdinal("player_city")),
+                    Street = reader.GetString(reader.GetOrdinal("player_street")),
+                    ZipCode = reader.GetString(reader.GetOrdinal("player_zip_code")),
                 };
             }
 
-            if (!reader.IsDBNull(14))
+            if (!reader.IsDBNull(reader.GetOrdinal("psl_id")))
             {
                 player.SocialLinks = new PlayerSocialLink
                 {
-                    ID = reader.GetInt32(14),
-                    FacebookLink = reader.GetString(15),
-                    InstagramLink = reader.GetString(16),
-                    TwitterLink = reader.GetString(17),
-                    YoutubeLink = reader.GetString(18),
+                    ID = reader.GetInt32(reader.GetOrdinal("psl_id")),
+                    FacebookLink = reader.GetString(reader.GetOrdinal("player_facebook_link")),
+                    InstagramLink = reader.GetString(reader.GetOrdinal("player_instagram_link")),
+                    TwitterLink = reader.GetString(reader.GetOrdinal("player_twitter_link")),
+                    YoutubeLink = reader.GetString(reader.GetOrdinal("player_youtube_link")),
                 };
             }
 
-            if (!reader.IsDBNull(19))
+            if (!reader.IsDBNull(reader.GetOrdinal("pp_id")))
             {
                 player.PlayerPhones = new List<PlayerPhone>
                 {
                     new PlayerPhone
                     {
-                        ID = reader.GetInt32(19),
-                        Phone = reader.GetString(20),
+                        ID = reader.GetInt32(reader.GetOrdinal("pp_id")),
+                        Phone = reader.GetString(reader.GetOrdinal("player_phone")),
                     },
                 };
             }
 
-            if (!reader.IsDBNull(21))
+            if (!reader.IsDBNull(reader.GetOrdinal("team_id")))
             {
                 player.Team = new Team
                 {
-                    ID = reader.GetInt32(21),
-                    Name = reader.GetString(22),
+                    ID = reader.GetInt32(reader.GetOrdinal("team_id")),
+                    Name = reader.GetString(reader.GetOrdinal("team_name")),
                 };
             }
 
