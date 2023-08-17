@@ -87,6 +87,7 @@ namespace EsportFTW_DAL.Repository
             var player = new Player
             {
                 Id = reader.GetInt32(reader.GetOrdinal("player_id")),
+                Ign = reader.GetString(reader.GetOrdinal("player_ign")),
                 Name = reader.GetString(reader.GetOrdinal("player_name")),
                 Email = reader.GetString(reader.GetOrdinal("player_email")),
                 Password = reader.GetString(reader.GetOrdinal("player_password")),

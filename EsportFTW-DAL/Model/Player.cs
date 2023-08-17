@@ -2,6 +2,7 @@ namespace EsportFTW_DAL.Model;
 
 public class Player : User
 {
+    public string Ign { get; set; }
     public DateTime JoinDate { get; set; }
     public decimal Salary { get; set; }
     public int PlayHours { get; set; }
