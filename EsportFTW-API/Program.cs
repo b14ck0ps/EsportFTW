@@ -25,6 +25,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddTransient(sp => DataFactory.AdminService);
 builder.Services.AddTransient(sp => DataFactory.PlayerService);
+builder.Services.AddTransient(sp => DataFactory.ManagerService);
 
 var app = builder.Build();
 
