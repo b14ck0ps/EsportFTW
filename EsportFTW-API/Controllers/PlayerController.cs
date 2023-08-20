@@ -35,13 +35,13 @@ namespace EsportFTW_API.Controllers
         [HttpPost]
         public ActionResult<PlayerRegistrationDto> Post([FromBody] PlayerRegistrationDto player)
         {
-            //if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            //if (_playerService.IsEmailUnique(player.Email))
-            //{
-            //    ModelState.AddModelError("Email", "Email is already in use");
-            //    return BadRequest(ModelState);
-            //}
+            if (_playerService.IsEmailUnique(player.Email))
+            {
+                ModelState.AddModelError("Email", "Email is already in use");
+                return BadRequest(ModelState);
+            }
 
             if (_playerService.RegisterWithAddress(player))
             {
