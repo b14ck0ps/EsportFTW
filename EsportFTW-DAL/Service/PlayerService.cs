@@ -37,6 +37,10 @@ namespace EsportFTW_DAL.Service
 
         public bool RegisterWithAddress(PlayerRegistrationDto entity)
         {
+            if (entity.Salary != 0) return _playerRepository.RegisterPlayer(entity);
+
+            var random = new Random();
+            entity.Salary = random.Next(1000, 10000);
             return _playerRepository.RegisterPlayer(entity);
         }
 
