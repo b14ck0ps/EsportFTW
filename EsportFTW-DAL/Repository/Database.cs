@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using System.Data;
+using Oracle.ManagedDataAccess.Client;
 
 namespace EsportFTW_DAL.Repository
 {
@@ -49,13 +50,17 @@ namespace EsportFTW_DAL.Repository
         /// </summary>
         /// <param name="query">The SQL query to execute</param>
         /// <param name="parameters">The parameter values for the query, if any</param>
+        /// <param name="isProcedure">If you pass any stored procedure make it TRUE</param>
         /// <returns>The number of rows affected</returns>
-        private protected static int ExecuteNonQuery(string query, OracleParameter[]? parameters = null)
+        private protected static int ExecuteNonQuery(string query, OracleParameter[]? parameters = null, bool isProcedure = false)
         {
             using var connection = new OracleConnection(ConnectionString);
             connection.Open();
 
             using var command = connection.CreateCommand();
+            if (isProcedure)
+                command.CommandType = CommandType.StoredProcedure;
+
             command.CommandText = query;
 
             if (parameters != null)
@@ -67,7 +72,7 @@ namespace EsportFTW_DAL.Repository
 
             connection.Close();
 
-            return rowsAffected;
+            return Math.Abs(rowsAffected);
         }
 
         /// <summary>

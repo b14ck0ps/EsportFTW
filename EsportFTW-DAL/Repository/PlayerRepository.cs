@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using EsportFTW_DAL.DTOs;
 using EsportFTW_DAL.Interface;
 using EsportFTW_DAL.Model;
 using Oracle.ManagedDataAccess.Client;
@@ -79,6 +80,33 @@ namespace EsportFTW_DAL.Repository
             var count = ExecuteScalarQuery(query, new[] { parameter });
 
             return count > 0;
+        }
+
+
+
+        public bool RegisterPlayer(PlayerRegistrationDto playerDto)
+        {
+            var parameters = new[]
+            {
+                new OracleParameter("p_Ign", OracleDbType.Varchar2) { Value = playerDto.IGN },
+                new OracleParameter("p_Name", OracleDbType.Varchar2) { Value = playerDto.Name },
+                new OracleParameter("p_Email", OracleDbType.Varchar2) { Value = playerDto.Email },
+                new OracleParameter("p_Password", OracleDbType.Varchar2) { Value = playerDto.Password },
+                new OracleParameter("p_Picture", OracleDbType.Varchar2) { Value = playerDto.Picture },
+                new OracleParameter("p_JoinDate", OracleDbType.Date) { Value = playerDto.JoinDate },
+                new OracleParameter("p_Salary", OracleDbType.Decimal) { Value = playerDto.Salary },
+                new OracleParameter("p_Play_Hours", OracleDbType.Int32) { Value = playerDto.PlayHours },
+                new OracleParameter("p_DOB", OracleDbType.Date) { Value = playerDto.DOB },
+                new OracleParameter("p_Country", OracleDbType.Varchar2) { Value = playerDto.SelectedCountry },
+                new OracleParameter("p_City", OracleDbType.Varchar2) { Value = playerDto.City },
+                new OracleParameter("p_Street", OracleDbType.Varchar2) { Value = playerDto.Street },
+                new OracleParameter("p_Zip_Code", OracleDbType.Varchar2) { Value = playerDto.ZipCode }
+            };
+
+            const string procedureName = "Insert_Player_Data";
+            var rowsAffected = ExecuteNonQuery(procedureName, parameters, isProcedure: true);
+
+            return rowsAffected > 0;
         }
 
 

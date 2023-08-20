@@ -33,7 +33,7 @@ namespace EsportFTW_API.Controllers
         }
 
         [HttpPost]
-        public ActionResult<PlayerBaseInfo> Post([FromBody] PlayerBaseInfo player)
+        public ActionResult<PlayerRegistrationDto> Post([FromBody] PlayerRegistrationDto player)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -43,7 +43,7 @@ namespace EsportFTW_API.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (_playerService.Add(player))
+            if (_playerService.RegisterWithAddress(player))
             {
                 return Created("api/player", player);
             }
@@ -55,9 +55,10 @@ namespace EsportFTW_API.Controllers
         {
             //if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            if (_playerService.Update(player))
+            /*if (_playerService.Update(player))
                 return Ok(player);
-            return BadRequest();
+            return BadRequest();*/
+            return Ok();
         }
 
         [HttpDelete]

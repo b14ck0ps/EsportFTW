@@ -22,34 +22,41 @@ namespace EsportFTW_DAL.Service
         {
             var newPlayer = new Player()
             {
+                Ign = entity.Ign,
                 Name = entity.Name,
                 Email = entity.Email,
                 Password = entity.Password,
                 DOB = entity.DOB,
                 Picture = entity.Picture,
                 JoinDate = DateTime.Now,
-                PlayHours = entity.PlayHours,
+                PlayHours = 0,
             };
 
             return _playerRepository.Add(newPlayer);
         }
 
-        public bool Update(PlayerBaseInfo entity)
+        public bool RegisterWithAddress(PlayerRegistrationDto entity)
         {
-            var updatedPlayer = new Player()
-            {
-                Id = entity.Id,
-                Name = entity.Name,
-                Email = entity.Email,
-                Password = entity.Password,
-                DOB = entity.DOB,
-                Picture = entity.Picture,
-                JoinDate = DateTime.Now,
-                PlayHours = entity.PlayHours,
-                Salary = entity.Salary
-            };
+            return _playerRepository.RegisterPlayer(entity);
+        }
 
-            return _playerRepository.Update(updatedPlayer);
+        public bool Update(PlayerRegistrationDto entity)
+        {
+            /*            var updatedPlayer = new Player()
+                        {
+                            Id = entity.Id,
+                            Name = entity.Name,
+                            Email = entity.Email,
+                            Password = entity.Password,
+                            DOB = entity.DOB,
+                            Picture = entity.Picture,
+                            JoinDate = DateTime.Now,
+                            PlayHours = entity.PlayHours,
+                            Salary = entity.Salary
+                        };
+            */
+            //return _playerRepository.Update(updatedPlayer);
+            return false;
         }
 
         public bool Delete(int id)
