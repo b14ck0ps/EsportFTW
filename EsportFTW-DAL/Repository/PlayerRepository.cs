@@ -15,7 +15,7 @@ namespace EsportFTW_DAL.Repository
 
         public Player Get(int id)
         {
-            const string query = AllPlayerDataQuery + " WHERE p.player_id = :id";
+            const string query = AllPlayerDataQuery + " WHERE player_id = :id";
             var parameter = new OracleParameter(":id", OracleDbType.Int32) { Value = id };
             return ExecuteReaderQuery(query, MapPlayer, new[] { parameter }).FirstOrDefault()!;
         }
