@@ -6,7 +6,7 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace EsportFTW_DAL.Repository
 {
-    internal class PlayerRepository : Database, IRepository<Player, bool>
+    internal class PlayerRepository : Database, IRepository<Player, bool>, IAuth
     {
         public IEnumerable<Player> Get()
         {
@@ -71,18 +71,6 @@ namespace EsportFTW_DAL.Repository
             var rowsAffected = ExecuteNonQuery(query, new[] { parameter });
             return rowsAffected > 0;
         }
-
-        public bool EmailExists(string email)
-        {
-            const string query = "SELECT COUNT(*) FROM player WHERE player_email = :email";
-            var parameter = new OracleParameter(":email", OracleDbType.Varchar2) { Value = email };
-
-            var count = ExecuteScalarQuery(query, new[] { parameter });
-
-            return count > 0;
-        }
-
-
 
         public bool RegisterPlayer(PlayerRegistrationDto playerDto)
         {
@@ -172,6 +160,30 @@ namespace EsportFTW_DAL.Repository
             }
 
             return player;
+        }
+
+        public bool IsAuthenticated(LoginDto loginDto)
+        {
+            const string query = "SELECT COUNT(*) FROM player WHERE player_email = :email AND player_password = :password";
+            var parameter = new[]
+            {
+                new OracleParameter(":email", OracleDbType.Varchar2) { Value = loginDto.Email },
+                new OracleParameter(":password", OracleDbType.Varchar2) { Value = loginDto.Password }
+            };
+
+            var count = ExecuteScalarQuery(query, parameter);
+
+            return count > 0;
+        }
+
+        public bool IsEmailUnique(string email)
+        {
+            const string query = "SELECT COUNT(*) FROM player WHERE player_email = :email";
+            var parameter = new OracleParameter(":email", OracleDbType.Varchar2) { Value = email };
+
+            var count = ExecuteScalarQuery(query, new[] { parameter });
+
+            return count > 0;
         }
 
 

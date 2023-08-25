@@ -3,7 +3,7 @@ using EsportFTW_DAL.DTOs;
 
 namespace EsportFTW_DAL.Interface
 {
-    public interface IPlayerService
+    public interface IPlayerService : IAuth
     {
         IEnumerable<Player> Get();
         Player Get(int id);
@@ -11,6 +11,5 @@ namespace EsportFTW_DAL.Interface
         bool RegisterWithAddress(PlayerRegistrationDto entity);
         bool Update(PlayerRegistrationDto entity);
         bool Delete(int id);
-        bool IsEmailUnique(string email);
     }
 }

@@ -68,9 +68,14 @@ namespace EsportFTW_DAL.Service
             return _playerRepository.Delete(id);
         }
 
+        public bool IsAuthenticated(LoginDto loginDto)
+        {
+            return _playerRepository.IsAuthenticated(loginDto);
+        }
+
         public bool IsEmailUnique(string email)
         {
-            return _playerRepository.EmailExists(email);
+            return _playerRepository.IsEmailUnique(email);
         }
     }
 }
