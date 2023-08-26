@@ -1,7 +1,4 @@
 ﻿using EsportFTW_DAL.DTOs;
-using EsportFTW_DAL.Interface;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EsportFTW_API.Controllers
@@ -66,6 +63,15 @@ namespace EsportFTW_API.Controllers
             if (_playerService.Delete(id))
                 return Ok();
             return BadRequest();
+        }
+
+        [HttpPost]
+        [Route("getId")]
+        public ActionResult<int> GetPlayerByEmail([FromBody] EmailDto o)
+        {
+            var id = _playerService.GetPlayerByEmail(o.Email);
+            if (id == 0) return BadRequest();
+            return Ok(id);
         }
     }
 }

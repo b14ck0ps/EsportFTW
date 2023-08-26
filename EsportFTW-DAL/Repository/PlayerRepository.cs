@@ -204,6 +204,16 @@ namespace EsportFTW_DAL.Repository
             return count > 0;
         }
 
+        public int GetPlayerId(string email)
+        {
+            const string query = "SELECT player_id FROM player WHERE player_email = :email";
+            var parameter = new OracleParameter(":email", OracleDbType.Varchar2) { Value = email };
+
+            var playerId = ExecuteScalarQuery(query, new[] { parameter });
+
+            return playerId;
+        }
+
 
         private const string AllPlayerDataQuery = "select * from player_detail_view";
 

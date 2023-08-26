@@ -12,5 +12,6 @@ namespace EsportFTW_DAL.Interface
         bool UpdatePlayerBasicInfo(PlayerUpdateDto entity);
         bool Update(PlayerUpdateDto entity);
         bool Delete(int id);
+        int GetPlayerByEmail(string email);
     }
 }
