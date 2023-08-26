@@ -63,6 +63,24 @@ namespace EsportFTW_DAL.Repository
             return rowsAffected > 0;
         }
 
+        public bool UpdatePlayerBasicInfo(PlayerUpdateDto playerUpdateDto)
+        {
+            var parameters = new[]
+            {
+                new OracleParameter("p_Player_ID", OracleDbType.Int32) { Value = playerUpdateDto.Id },
+                new OracleParameter("p_Name", OracleDbType.Varchar2) { Value = playerUpdateDto.Name },
+                new OracleParameter("p_Play_Hours", OracleDbType.Int32) { Value = playerUpdateDto.PlayHours },
+                new OracleParameter("p_DOB", OracleDbType.Date) { Value = playerUpdateDto.Dob },
+                new OracleParameter("p_City", OracleDbType.Varchar2) { Value = playerUpdateDto.City },
+                new OracleParameter("p_Street", OracleDbType.Varchar2) { Value = playerUpdateDto.Street },
+                new OracleParameter("p_Zip_Code", OracleDbType.Varchar2) { Value = playerUpdateDto.ZipCode }
+            };
+            const string procedureName = "Update_Player_Data";
+            var rowsAffected = ExecuteNonQuery(procedureName, parameters, isProcedure: true);
+
+            return rowsAffected > 0;
+        }
+
         public bool Delete(int id)
         {
             const string query = "DELETE FROM player WHERE player_id = :id";

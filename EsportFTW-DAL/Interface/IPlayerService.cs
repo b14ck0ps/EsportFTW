@@ -9,7 +9,8 @@ namespace EsportFTW_DAL.Interface
         Player Get(int id);
         bool Add(PlayerBaseInfo entity);
         bool RegisterWithAddress(PlayerRegistrationDto entity);
-        bool Update(PlayerRegistrationDto entity);
+        bool UpdatePlayerBasicInfo(PlayerUpdateDto entity);
+        bool Update(PlayerUpdateDto entity);
         bool Delete(int id);
     }
 }
