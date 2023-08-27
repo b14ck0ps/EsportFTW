@@ -26,7 +26,6 @@ namespace EsportFTW_API.Controllers
         public ActionResult<ManagerBase> Post([FromBody] ManagerBase manager)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-
             _managerService.Add(manager);
             return Created("api/manager", manager);
         }
