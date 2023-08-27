@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EsportFTW_DAL.DTOs;
+using EsportFTW_DAL.Interface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EsportFTW_API.Controllers
 {
@@ -41,7 +43,7 @@ namespace EsportFTW_API.Controllers
         public ActionResult<Admin> Put([FromBody] Admin admin)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            
+
             _adminService.Update(admin);
             return Ok(admin);
         }
@@ -52,6 +54,15 @@ namespace EsportFTW_API.Controllers
             _adminService.Get(id);
             _adminService.Delete(id);
             return Ok();
+        }
+
+        [HttpPost]
+        [Route("getId")]
+        public ActionResult<int> GetPlayerByEmail([FromBody] EmailDto o)
+        {
+            var id = _adminService.GetAdminByEmail(o.Email);
+            if (id == 0) return BadRequest();
+            return Ok(id);
         }
     }
 }

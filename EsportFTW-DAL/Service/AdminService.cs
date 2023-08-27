@@ -1,4 +1,5 @@
-﻿using EsportFTW_DAL.Interface;
+﻿using EsportFTW_DAL.DTOs;
+using EsportFTW_DAL.Interface;
 using EsportFTW_DAL.Model;
 using EsportFTW_DAL.Repository;
 
@@ -31,6 +32,21 @@ namespace EsportFTW_DAL.Service
         public bool Delete(int id)
         {
             return _adminRepository.Delete(id);
+        }
+
+        public int GetAdminByEmail(string email)
+        {
+            return _adminRepository.GetAdminByIdEmail(email);
+        }
+
+        public bool IsAuthenticated(LoginDto loginDto)
+        {
+            return _adminRepository.IsAuthenticated(loginDto);
+        }
+
+        public bool IsEmailUnique(string email)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using EsportFTW_DAL.DTOs;
 using EsportFTW_DAL.Interface;
 using EsportFTW_DAL.Model;
 using Oracle.ManagedDataAccess.Client;
@@ -60,6 +61,24 @@ namespace EsportFTW_DAL.Repository
             return rowsAffected > 0;
         }
 
+        public bool IsAuthenticated(LoginDto loginDto)
+        {
+            const string query = "SELECT * FROM Admin WHERE admin_email = :email AND admin_password = :password";
+            var parameters = new[]
+            {
+                new OracleParameter(":email", OracleDbType.Varchar2) { Value = loginDto.Email},
+                new OracleParameter(":password", OracleDbType.Varchar2) { Value = loginDto.Password},
+            };
+
+            var rowsAffected = ExecuteReaderQuery(query, MapAdmin, parameters).Count();
+            return rowsAffected > 0;
+        }
+        public int GetAdminByIdEmail(string email)
+        {
+            const string query = "SELECT admin_id FROM Admin WHERE admin_email = :email";
+            var parameter = new OracleParameter(":email", OracleDbType.Varchar2) { Value = email };
+            return ExecuteScalarQuery(query, new[] { parameter });
+        }
         /*Custom mapper for the Admin entity*/
         private static Admin MapAdmin(IDataRecord reader)
         {
