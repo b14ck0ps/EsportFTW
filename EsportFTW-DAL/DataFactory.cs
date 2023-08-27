@@ -8,5 +8,6 @@ namespace EsportFTW_DAL
         public static IAdminService AdminService => new AdminService();
         public static IPlayerService PlayerService => new PlayerService();
         public static IAuth PlayerAuthService => new PlayerService();
+        public static IManagerService MangerService => new ManagerService();
     }
 }
